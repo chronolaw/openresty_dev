@@ -43,3 +43,9 @@ luac.out
 *.swp
 *.swo
 
+# nginx
+*.log
+*.pid
+
+# test nginx
+servroot/
