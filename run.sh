@@ -1,11 +1,11 @@
 #!/bin/sh
 
-ngx_path="/usr/local/openresty/nginx"
-ngx="${ngx_path}/sbin/nginx"
+openresty_path="/usr/local/openresty"
+openresty="${openresty_path}/bin/openresty"
 opts="-p `pwd`"
 
 if [ $# -eq 0 ] ; then
-    sudo $ngx $opts
+    sudo $openresty $opts
     exit 0
 fi
 
@@ -21,5 +21,5 @@ fi
 
 opts="$opts -s $1"
 
-sudo $ngx $opts
+sudo $openresty $opts
 
