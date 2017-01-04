@@ -1,5 +1,5 @@
 # openresty_guide
-This is the sample code for OpenResty Guide
+This is the sample code for OpenResty Programming.
 
 ##Requirements
 * Linux or other UNIX like
