@@ -11,8 +11,3 @@ end
 
 print(type(pai))
 
-local data, err
-local a, b = 1, 'lua'
-local x, y = a, b, 'not_used'
-local m, n = "only this"
-
