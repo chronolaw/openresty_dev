@@ -8,3 +8,9 @@ print(type("metroid"))      -- string
 print(type(print))          -- function
 print(type(table))          -- table
 
+x = 2017
+x = "lua"
+x = nil
+
+assert(not x)
+
