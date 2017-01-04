@@ -8,3 +8,9 @@
 
 print("hello lua")
 
+local n = #arg
+print("args count = ", n)
+for i = 1,n do
+    print("arg ", n , ": ", arg[i])
+end
+
