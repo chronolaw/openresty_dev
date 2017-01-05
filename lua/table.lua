@@ -30,4 +30,10 @@ for k,v in pairs(x) do
     print(k, ' => ', v)
 end
 
+local function f(v)
+    v.name = v.name .. ' aran'
+end
+
+f(x)
+print(x.name)
 
