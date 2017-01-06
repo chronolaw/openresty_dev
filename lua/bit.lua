@@ -1,5 +1,7 @@
 #!/usr/local/openresty/bin/resty
 
+-- Copyright (C) 2017 by chrono
+
 local bit = require "bit"
 
 local band, bor = bit.band, bit.bor
