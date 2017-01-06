@@ -5,6 +5,9 @@ print(string.sub(str, 1, 4))
 print(string.sub(str, 7))
 print(string.sub(str, 5, -1))
 
+local a, b = string.byte(str, 1, 2)
+print(a, ", ", b)
+
 local a = {'openresty', 'lua'}
 print(table.concat(a, '+'))
 
