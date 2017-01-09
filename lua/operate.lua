@@ -2,6 +2,8 @@
 
 -- Copyright (C) 2017 by chrono
 
+print(0xff, ' ', 0xff00)
+
 print(1 + 1, ",", 5 - 3)
 print(2 * 4, ",", 1 / 3)
 print(5 % 2, ",", 3 ^ 3)
