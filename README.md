@@ -1,4 +1,4 @@
-# openresty_guide
+# openresty_dev
 This is the sample code for OpenResty Programming.
 
 ##Requirements
