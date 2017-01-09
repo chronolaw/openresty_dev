@@ -1,5 +1,7 @@
 -- Copyright (C) 2017 by chrono
 
+local echo_string = "hello nginx"
+
 local method = ngx.req.get_method()
 
 if method ~= "GET" then
@@ -9,11 +11,17 @@ end
 
 ngx.req.discard_body()
 
-local str = ngx.var.echo_string or "hello nginx"
 local args = ngx.var.args or ""
 
+local len = #echo_string
+local str = echo_string
+
 if #args > 0 then
-    ngx.print(args, ",")
+    len = #args + 1 + len
+    str = args .. ", " .. str
 end
+
+ngx.header.content_length = len
+ngx.status = 200
 
 ngx.say(str)
