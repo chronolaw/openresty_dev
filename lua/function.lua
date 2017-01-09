@@ -1,5 +1,7 @@
 #!/usr/local/openresty/bin/resty
 
+-- Copyright (C) 2017 by chrono
+
 local function f1(a)
     a = 'sliver'
     print("var is ", a)

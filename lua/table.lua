@@ -1,5 +1,7 @@
 #!/usr/local/openresty/bin/resty
 
+-- Copyright (C) 2017 by chrono
+
 local a = {3, 5, 7}
 
 assert(a[1] == 3 and a[2] == 5)

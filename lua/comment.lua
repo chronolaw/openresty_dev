@@ -1,5 +1,7 @@
 #!/usr/local/openresty/bin/resty
 
+-- Copyright (C) 2017 by chrono
+
 -- this is a comment
 -- 当然可以使用中文注释
 

@@ -1,5 +1,7 @@
 #!/usr/local/openresty/bin/resty
 
+-- Copyright (C) 2017 by chrono
+
 local data, err
 local a, b = 1, 'lua'
 local x, y = a, b, 'not_used'

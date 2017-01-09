@@ -1,5 +1,7 @@
 #!/usr/local/openresty/bin/resty
 
+-- Copyright (C) 2017 by chrono
+
 local str = 'hello lua'
 print(string.sub(str, 1, 4))
 print(string.sub(str, 7))

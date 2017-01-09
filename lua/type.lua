@@ -1,5 +1,7 @@
 #!/usr/local/openresty/bin/resty
 
+-- Copyright (C) 2017 by chrono
+
 print(type(nil))            -- nil
 print(type(true))           -- boolean
 print(type(42))             -- number
