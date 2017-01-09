@@ -8,6 +8,10 @@ print(1 + 1, ",", 5 - 3)
 print(2 * 4, ",", 1 / 3)
 print(5 % 2, ",", 3 ^ 3)
 
+count = 10
+count = count + 1       -- equalient to ++count
+assert(count == 11)
+
 print(5 + '10')
 --print(5 + 'xxx')
 
