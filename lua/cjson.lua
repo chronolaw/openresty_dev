@@ -1,13 +1,15 @@
--- Copyright (C) 2016 by chrono
+#!/usr/local/openresty/bin/resty
+
+-- Copyright (C) 2017 by chrono
 
 -- safe decode
 local cjson = require "cjson.safe"
 
-ngx.say("test cjson")
+print("test cjson")
 
 local str = cjson.encode({name='jojo', cat = 'comic'})
 
-ngx.say(str)
+print(str)
 
 local obj = cjson.decode(str)
 
@@ -16,5 +18,3 @@ assert(obj.cat == 'comic')
 
 obj = cjson.decode([[{"error":format"}]])
 assert(not obj)
-
-ngx.exit(200)
