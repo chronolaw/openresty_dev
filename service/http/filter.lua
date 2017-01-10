@@ -1,19 +1,20 @@
 -- Copyright (C) 2017 by chrono
 
 local headers = {}
-headers['xxx'] = 'xxx'
+headers['x-name'] = 'chrono'
+headers['x-value'] = 'trigger'
 
-local footer = "zzz"
+local footer = "ocarina of time\n"
 
 local function header_filter()
     for k,v in pairs(headers) do
         ngx.header[k] = v
     end
 
-    local len = tonumber(ngx.header.content_length)
-    if len and len > 0 then
-        ngx.header.content_length = len + #footer
-    end
+    --local len = tonumber(ngx.header.content_length)
+    --if len and len > 0 then
+    --    ngx.header.content_length = len + #footer
+    --end
 end
 
 local function body_filter()

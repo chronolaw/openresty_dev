@@ -1,6 +1,6 @@
 -- Copyright (C) 2017 by chrono
 
-local echo_string = "hello nginx"
+local echo_string = "hello nginx\n"
 
 local method = ngx.req.get_method()
 
@@ -18,10 +18,12 @@ local str = echo_string
 
 if #args > 0 then
     len = #args + 1 + len
-    str = args .. ", " .. str
+    str = args .. "," .. str
 end
 
 ngx.header.content_length = len
 ngx.status = 200
 
-ngx.say(str)
+--ngx.send_headers()
+
+ngx.print(str)
