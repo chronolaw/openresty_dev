@@ -8,6 +8,7 @@
 
 ngx.log(ngx.INFO, "hello openresty")
 ngx.log(ngx.WARN, "warning is ", "some messgae")
+ngx.log(ngx.DEBUG, debug.traceback())
 
 local print = ngx.say
 
