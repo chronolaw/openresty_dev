@@ -2,11 +2,9 @@
 
 local footer = "ocarina of time\n"
 
-local eof = ngx.arg[2]
+ngx.log(ngx.INFO, "chunk = ", ngx.arg[1], " eof = ", ngx.arg[2])
 
-ngx.log(ngx.INFO, "chunk = ", ngx.arg[1], " eof = ", eof)
-
-if not eof then
+if not ngx.arg[2] then
     return
 end
 
