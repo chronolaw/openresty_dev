@@ -21,6 +21,7 @@ local function body_filter()
     local buf = ngx.arg[1]
     local eof = ngx.arg[2]
 
+    ngx.log(ngx.ERR, "buf = ", buf, " eof = ", eof)
     if not eof then
         return
     end
@@ -28,7 +29,7 @@ local function body_filter()
     ngx.arg[1] = buf .. footer
 end
 
-if ngx.get_phase ~= "header_filter" then
+if ngx.get_phase() ~= "header_filter" then
     header_filter()
 elseif ngx.get_phase ~= "body_filter" then
     body_filter()

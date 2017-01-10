@@ -21,8 +21,8 @@ if #args > 0 then
     str = args .. "," .. str
 end
 
-ngx.header.content_length = len
-ngx.status = 200
+--ngx.header.content_length = len
+--ngx.status = 200
 
 --ngx.send_headers()
 
