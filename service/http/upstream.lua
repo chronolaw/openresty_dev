@@ -12,7 +12,8 @@ local backend_addr = "127.0.0.1"
 local backend_port = 2017
 
 local args = ngx.var.args
-args = args and #args > 0 and args or "xxxx"
+args = args and #args >= 4 and
+       string.sub(args, 1, 4) or "xxxx"
 
 local sock = ngx.socket.tcp()
 
