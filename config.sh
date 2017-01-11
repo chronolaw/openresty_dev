@@ -16,8 +16,6 @@ addons="--add-module=${github}/stream-lua-nginx-module
 
 ./configure     \
         --build="${build_date}" \
-        ${no_modules}           \
-        ${stream}               \
-        ${addons}
+        ${no_modules}
 
 
