@@ -1,4 +1,4 @@
--- Copyright (C) 2016 by chrono
+-- Copyright (C) 2017 by chrono
 
 local proto = { _VERSION = '0.01' }
 

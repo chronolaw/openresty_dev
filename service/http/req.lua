@@ -1,4 +1,4 @@
--- Copyright (C) 2016 by chrono
+-- Copyright (C) 2017 by chrono
 
 -- modify response headers
 ngx.header["Host-Name"] = ngx.var.hostname
