@@ -1,11 +1,11 @@
 # openresty_dev
 This is the sample code for OpenResty Programming.
 
-##Requirements
+## Requirements
 * Linux or other UNIX like
 * OpenResty 1.11.2.x or later
 
-##See Also
+## See Also
 * [ngx_cpp_dev](https://github.com/chronolaw/ngx_cpp_dev) - Nginx cpp development kit, with the power of C++11 and Boost Library.
 * [annotated_nginx](https://github.com/chronolaw/annotated_nginx) - 注释nginx1.10.2，学习研究源码
 * [favorite-nginx](https://github.com/chronolaw/favorite-nginx) - Selected favorite nginx modules and resources.
