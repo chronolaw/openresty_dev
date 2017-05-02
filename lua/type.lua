@@ -19,7 +19,7 @@ x = nil
 assert(not x)
 
 print('openresty')
-print("I's OK")
+print("It's OK")
 print("lua\tnginx")
 
 print([[raw string \r\n]])
