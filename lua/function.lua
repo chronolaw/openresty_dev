@@ -2,10 +2,14 @@
 
 -- Copyright (C) 2017 by chrono
 
+print[[string]]
+
 local function f1(a)
     a = 'sliver'
     print("var is ", a)
 end
+
+f1{1,2,3}
 
 local x = 'golden'
 f1(x, 'heart')
