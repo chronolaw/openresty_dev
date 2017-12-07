@@ -3,8 +3,17 @@
 -- Copyright (C) 2017 by chrono
 
 local a = {3, 5, 7}
+local d = {one=1,two=2}
+local t = {red=9, [3]=3, ['a'] = {}}
 
 assert(a[1] == 3 and a[2] == 5)
+assert(d['one'] == 1)
+assert(t['red'] == 9 and t[3] == 3)
+
+a[1] = 100
+
+d['three'] = 3
+assert(d['three'] == 3)
 
 local x = {}
 
