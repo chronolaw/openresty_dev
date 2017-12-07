@@ -8,8 +8,10 @@ assert(x == 1)
 local str = 'matrix'
 
 do
-    local pai = 3.14
+    local pi = 3.14
 end
 
-print(type(pai))
+print(type(pi))
+
+local MAX_COUNT = 1000
 

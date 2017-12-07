@@ -18,9 +18,3 @@ x = nil
 
 assert(not x)
 
-print('openresty')
-print("It's OK")
-print("lua\tnginx")
-
-print([[raw string \r\n]])
-print([[^\d+.\d+$]])
