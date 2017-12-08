@@ -27,3 +27,14 @@ end
 
 local x, y = f3(10, 20)
 assert(x == 10+20 and y == 10*20)
+
+-- Closure
+local value = 0
+
+local function counter()
+    value = value + 1
+    return value
+end
+
+print(counter())
+print(counter())
