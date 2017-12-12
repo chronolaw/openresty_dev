@@ -52,6 +52,11 @@ f:close()
 
 -----------------
 
+print(os.date("%Y-%m-%d"))
+print(os.date("%m-%d %H:%M:%S",1513059494))
+
+-----------------
+
 print(debug.traceback())
 
 ------
