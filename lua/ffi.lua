@@ -10,6 +10,30 @@ local ffi_typeof = ffi.typeof
 local ffi_new = ffi.new
 local ffi_C = ffi.C
 
+--------------------------
+
+ffi_cdef[[
+struct dummy{};
+double sqrt(double x);
+int gethostname(char *name, size_t len);
+]]
+
+local int_t = ffi.typeof("int")
+local char_arr_t = ffi.typeof("char[?]")
+
+local a_int = ffi.new(int_t)
+local char_arr = char_arr_t(10)
+
+local x = ffi.C.sqrt(5)
+print(x)
+
+ffi.fill(char_arr, 10)
+ffi.C.gethostname(char_arr, 10)
+print(char_arr)
+print(ffi.string(char_arr))
+
+--------------------------
+
 ffi_cdef[[
 struct timeval {                // this is a comment
     long int tv_sec;
