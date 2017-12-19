@@ -42,7 +42,7 @@ end
 -----------------
 
 local f = io.open("./hello.lua", "r")
-print(f:read("*line"))
+print(f:read("*l"))
 print(f:read(20))
 f:close()
 
