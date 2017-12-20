@@ -31,6 +31,7 @@ ffi.fill(char_arr, 10)
 ffi.C.gethostname(char_arr, 10)
 print(char_arr)
 print(ffi.string(char_arr))
+print(string.char(char_arr[0]))
 
 --------------------------
 

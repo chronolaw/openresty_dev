@@ -2,6 +2,15 @@
 
 -- Copyright (C) 2017 by chrono
 
+----------------------
+
+collectgarbage("collect")
+print(collectgarbage("count"))
+
+local f = loadstring("return 42")
+print(f())
+
+----------------------
 local str = 'Hello'
 print(string.upper(str))
 print(string.lower(str))
