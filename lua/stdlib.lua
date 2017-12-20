@@ -10,6 +10,15 @@ print(collectgarbage("count"))
 local f = loadstring("return 42")
 print(f())
 
+package.loaded.num = f
+
+local num = require "num"
+print("hot load : ", num())
+
+package.loaded.num = loadstring("return 3.14")
+local num = require "num"
+print("hot load : ", num())
+
 ----------------------
 local str = 'Hello'
 print(string.upper(str))
