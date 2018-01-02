@@ -26,3 +26,15 @@ local data = mp.pack(a)..mp.pack(b)..mp.pack(c)
 for i, v in mp.unpacker(data) do
     ngx.say("offset ", i, " is ", v)
 end
+
+ngx.say('do not use ipairs')
+
+local iter = mp.unpacker(data)
+while iter do
+    local i, v = iter()
+    if not v then
+        break
+    end
+
+    ngx.say("offset ", i, " is ", v)
+end

@@ -21,7 +21,9 @@ ngx.say(ngx.cookie_time(secs))
 local str = "Tue, 02 Jan 2018 08:05:39 GMT"
 ngx.say(ngx.parse_http_time(str))
 
+ngx.say(ngx.now())
 ngx.update_time()
+ngx.say(ngx.now())
 
 ngx.sleep(1.0)
 ngx.say("sleep 1 second")
