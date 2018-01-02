@@ -6,6 +6,7 @@
 
 local secs = ngx.time()
 local msecs = ngx.now()
+ngx.say(secs)
 
 assert(msecs - secs < 1)
 
@@ -13,11 +14,11 @@ ngx.say(ngx.today())
 ngx.say(ngx.localtime())
 ngx.say(ngx.utctime())
 
-local secs = 1514442072
+local secs = 1514880339
 ngx.say(ngx.http_time(secs))
 ngx.say(ngx.cookie_time(secs))
 
-local str = "Thu, 28 Dec 2017 06:21:12 GMT"
+local str = "Tue, 02 Jan 2018 08:05:39 GMT"
 ngx.say(ngx.parse_http_time(str))
 
 ngx.update_time()
