@@ -2,6 +2,35 @@
 
 local print = ngx.say
 
+-- options
+
+local str = "abcdXYZ-123"
+print(ngx.re.match(str, [[\w+]], "ad")[0])
+print(ngx.re.match(str, [[\w+z]], "ijo")[0])
+print(ngx.re.match(str, [[z.\d+(?#num)]], "ijox")[0])
+
+--- match
+local str = "abcd-123"
+
+local m = ngx.re.match(str, [[\d{3}]], "jo")
+assert(m and m[0] == "123")
+
+local m = ngx.re.match(str, "(.*)123$", "jo")
+assert(m and m[1] == "abcd-")
+
+local m = ngx.re.match(str, "[A-Z]+", "jo")
+assert(not m)
+
+local ctx = {pos = 7}
+local m = ngx.re.match(str, "[0-9]", "", ctx)
+assert(m and m[0] == "2" and ctx.pos == 8)
+
+m = {}
+ctx.pos = 1
+ngx.re.match(str, "(.*)-(.*)$", "", ctx, m)
+assert(m and m[2] == "123")
+------
+
 local str = "abcd-123"
 str = ngx.re.sub(str, "ab", "cd", "jo")
 
