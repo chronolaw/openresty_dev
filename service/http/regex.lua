@@ -96,10 +96,17 @@ print("after gsub : ", str)
 
 --- split
 
+local str = "a,b,c,d"
+
 local ngx_re_split = require("ngx.re").split
-local res, err = ngx_re_split("a,b,c,d", ",")
+local res = ngx_re_split(str, ",")
 assert(res and #res == 4)
 assert(res[1] == 'a' and res[4] == 'd')
+
+local res = ngx_re_split(str, ",", nil, nil, 2)
+assert(res and #res == 2)
+print("split : ", res[2])
+
 
 ------
 
