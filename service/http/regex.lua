@@ -107,7 +107,6 @@ local res = ngx_re_split(str, ",", nil, nil, 2)
 assert(res and #res == 2)
 print("split : ", res[2])
 
-
 ------
 
 local str = "abcd-123"
