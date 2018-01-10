@@ -25,8 +25,8 @@ ngx.say(ngx.now())
 ngx.update_time()
 ngx.say(ngx.now())
 
-ngx.sleep(1.0)
-ngx.say("sleep 1 second")
+--ngx.sleep(1.0)
+--ngx.say("sleep 1 second")
 ngx.sleep(0.02)
 ngx.say("sleep 20 miliseconds")
 
