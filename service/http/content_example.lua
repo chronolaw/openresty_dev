@@ -1,6 +1,8 @@
 -- Copyright (C) 2018 by chrono
 
 local function action_get()
+    ngx.req.discard_body()
+
     local t = ngx.time()
     ngx.say(ngx.http_time(t))
 end
