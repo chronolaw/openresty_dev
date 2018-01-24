@@ -13,3 +13,5 @@ if ver < 1.1 then
    ngx.exit(400)
 end
 
+ngx.header.content_length = nil
+
