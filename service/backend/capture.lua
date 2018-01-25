@@ -4,7 +4,9 @@
 
 ngx.say('now capture proxy_pass:\n')
 
-local res = ngx.location.capture('/hello')
+local capture = ngx.location.capture
+
+local res = capture('/hello')
 
 if res.status ~= ngx.HTTP_OK then
     ngx.exit(res.status)
@@ -15,8 +17,7 @@ ngx.print(res.body)
 
 ngx.say('\nnow capture redis2_pass:\n')
 
-local res = ngx.location.capture(
-                '/ngx_redis2',
+local res = capture('/ngx_redis2',
                 {args = {key='metroid'}})
 
 ngx.print(res.body)
