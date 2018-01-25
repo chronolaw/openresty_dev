@@ -12,6 +12,9 @@ if res.status ~= ngx.HTTP_OK then
     ngx.exit(res.status)
 end
 
+if res.truncated then
+    ngx.log(ngx.ERR, "data truncated")
+end
 ngx.print(res.body)
 
 
