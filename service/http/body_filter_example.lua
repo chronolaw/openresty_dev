@@ -1,4 +1,4 @@
--- Copyright (C) 2017 by chrono
+-- Copyright (C) 2018 by chrono
 
 if ngx.status ~= ngx.HTTP_OK then
     return
