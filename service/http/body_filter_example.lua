@@ -1,5 +1,9 @@
 -- Copyright (C) 2017 by chrono
 
+if ngx.status ~= ngx.HTTP_OK then
+    return
+end
+
 local flag = ngx.var.arg_need_encode
 
 if flag then
