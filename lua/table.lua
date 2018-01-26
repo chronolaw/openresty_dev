@@ -33,6 +33,9 @@ for i=1, #a do
     print(a[i], ', ')
 end
 
+x['key'] = 1
+assert(#x == 0)
+
 for i,v in ipairs(a) do
     print(a[i], ', ')
 end
