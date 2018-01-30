@@ -1,6 +1,6 @@
 -- Copyright (C) 2017 by chrono
 
-local ffi = require "ffi"
+local ffi = require "bit"
 local band, brshift = bit.band, bit.rshift
 local tochar = string.char
 
