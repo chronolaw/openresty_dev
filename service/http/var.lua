@@ -8,6 +8,15 @@ if #ngx.var.is_args > 0 then
     ngx.say(ngx.var.args)
 end
 
+local str = "$http_host:$server_port"
+
+str = ngx.re.gsub(str, [[\$(\w+)]],
+            function(m)
+                return ngx.var[m[1]] or ""
+            end,
+            "jo")
+ngx.say("script is: ", str)
+
 ngx.say(type(ngx.var.request_length))
 
 local uri = ngx.var.uri
