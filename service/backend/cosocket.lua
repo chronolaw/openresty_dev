@@ -2,6 +2,21 @@
 
 -- curl 127.1:81/capture
 
+local function msgpack_uint_helper(c)
+    local tags = {
+        [0xcc] = 1,
+        [0xcd] = 2,
+        [0xce] = 4,
+        }
+
+    local x = string.byte(c)
+    if x <= 0x7f then
+        return 0
+    else
+        return tags[c] -- or nil
+    end
+end
+
 local ok, mp = pcall(require, "resty.msgpack")
 if not ok then
     ngx.say("resty.msgpack has not been installed")
@@ -18,8 +33,11 @@ if not ok then
 end
 
 local msg = {str = "hello", num = 3}
+
 local body = mp.pack(msg)
-local header = string.format("%04d", #body)
+local header = mp.pack(#body)
+
+--local header = string.format("%04d", #body)
 
 --ngx.log(ngx.ERR, "header len is: ", #header)
 
@@ -29,13 +47,29 @@ if err then
     return
 end
 
-local data, err = sock:receive(4)
-if not data or err then
+local c, err = sock:receive(1)
+if not c or err then
     ngx.log(ngx.ERR, "recieve header from backend failed: ", err)
     return
 end
 
-local len = tonumber(data)
+local remains = msgpack_uint_helper(c)
+assert(remains)
+
+local len
+if remains > 0 then
+    len = mp.unpack(c)
+else
+    local data, err = sock:receive(remains)
+    if not data or err then
+        ngx.log(ngx.ERR, "recieve header from client failed: ", err)
+        return
+    end
+
+    len = mp.unpack(c .. data)
+end
+
+--local len = tonumber(data)
 
 local data, err = sock:receive(len)
 if not data or err then
