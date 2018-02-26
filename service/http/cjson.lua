@@ -12,7 +12,7 @@ local obj = cjson.decode(str)
 assert(obj.name == 'jojo')
 assert(obj.cat == 'comic')
 
-obj = cjson.decode([[{"error":format"}]])
+obj = cjson.decode([[{"wrong":format"}]])
 assert(not obj)
 
 str = cjson.encode({1,2,3,4})
