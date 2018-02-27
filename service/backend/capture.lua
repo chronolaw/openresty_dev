@@ -17,8 +17,8 @@ if res.truncated then
 end
 ngx.print(res.body)
 
-
-ngx.say('\nnow capture redis2_pass:\n')
+ngx.say()
+ngx.say('now capture redis2_pass:\n')
 
 local res = capture('/ngx_redis2',
                 {args = {key='metroid'}})
