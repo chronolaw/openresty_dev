@@ -1,6 +1,7 @@
 -- Copyright (C) 2018 by chrono
 
--- curl 127.1:81/capture
+-- curl 127.1:81/cosocket
+-- curl 127.1:81/cosocket -d "12|34|"
 
 local function msgpack_uint_helper(c)
     local tags = {
@@ -23,6 +24,23 @@ if not ok then
     return
 end
 
+---- receiveuntil
+local sock = ngx.req.socket()
+sock:settimeout(1000)
+
+local iter = sock:receiveuntil("|")
+
+while true do
+    local data, err = iter()
+    if not data then
+        ngx.say("failed to read data: ", err)
+        break
+    end
+    ngx.say(data, ",")
+end
+
+----
+
 local sock = ngx.socket.tcp()
 sock:settimeout(1000)
 
@@ -31,6 +49,10 @@ if not ok then
     ngx.say("failed to connect to backend: ", err)
     return
 end
+
+local count, err = sock:getreusedtimes()
+--ngx.log(ngx.INFO, "sock usedtimes = ", count)
+ngx.say("sock usedtimes = ", count)
 
 local msg = {str = "hello", num = 3}
 
@@ -47,6 +69,7 @@ if err then
     return
 end
 
+--[[
 local c, err = sock:receive(1)
 if not c or err then
     ngx.log(ngx.ERR, "recieve header from backend failed: ", err)
@@ -77,6 +100,21 @@ if not data or err then
     return
 end
 
-local msg = mp.unpack(data)
-ngx.say("receive from backend: ", msg)
+ngx.say("receive from backend: ", data)
+--]]
+
+local data, err = sock:receive("*a")
+if not data or err then
+    ngx.log(ngx.ERR, "recieve data from backend failed: ", err)
+    return
+end
+
+local iter = mp.unpacker(data)
+
+local _, len = iter()
+local _, msg = iter()
+
+ngx.say("receive from backend. len: ", len, " data: ", msg)
+
+sock:setkeepalive()
 

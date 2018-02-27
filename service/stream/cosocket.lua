@@ -70,5 +70,5 @@ if err then
     return
 end
 
-sock:shutdown("send")
+--sock:shutdown("send")
 
