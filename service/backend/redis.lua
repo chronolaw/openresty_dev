@@ -11,6 +11,7 @@ rds:set_timeout(1000)   -- 1 sec
 local ok,err = rds:connect("127.0.0.1",6379)
 if not ok then
     ngx.say("failed to connect : ", err)
+    rds:close()
     return
 end
 --assert(ok)
