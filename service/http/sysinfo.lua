@@ -10,15 +10,15 @@ ngx.say(ngx.config.ngx_lua_version)
 ngx.say(jit.os)
 
 if ngx.config.nginx_version < 1013006 then
-    ngx.say("needs latest openresty")
+    error("needs latest openresty")
 end
 
 if ngx.config.ngx_lua_version < 10011 then
-    ngx.say("needs latest ngx_lua")
+    error("needs latest ngx_lua")
 end
 
 if ngx.config.subsystem ~= 'http' then
-    ngx.say("only works in http subsystem")
+    error("only works in http subsystem")
 end
 
 ngx.log(ngx.ERR, "some error occured")
