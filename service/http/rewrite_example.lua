@@ -13,5 +13,7 @@ if ver < 1.1 then
    ngx.exit(400)
 end
 
+ngx.ctx.encode = ngx.var.arg_need_encode
+
 ngx.header.content_length = nil
 
