@@ -62,4 +62,17 @@ assert(v == 'a')
 local v = shmem:rpop('list')
 assert(v == 'z')
 
+local v = shmem:rpop('list')
+assert(not v)
+
+-- expire
+
+
+-- others
+local cap = shmem:capacity()
+assert(cap == 1024*1024)
+
+local bytes = shmem:free_space()
+ngx.say(bytes / 1024)
+
 ngx.say('hello ngx.shared')
