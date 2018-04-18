@@ -67,8 +67,23 @@ assert(not v)
 
 -- expire
 
+local ok, err = shmem:set("data", 100, 0.02)
+--ngx.sleep(0.01)
+local ttl = shmem:ttl("data")
+ngx.say("ttl is : ", ttl)
+
+ngx.sleep(0.03)
+local v, _, stale = shmem:get_stale("data")
+ngx.say("stale is ", stale or "-")
+
+local ok, err = shmem:expire("data", 0.1)
+local ttl = shmem:ttl("data")
+ngx.say("ttl is : ", ttl)
+
 
 -- others
+ngx.say(shmem:get_keys())
+
 local cap = shmem:capacity()
 assert(cap == 1024*1024)
 
