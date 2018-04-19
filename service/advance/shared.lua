@@ -1,5 +1,7 @@
 -- Copyright (C) 2017-2018 by chrono
 
+-- curl 127.1:83/shared
+
 local shmem = ngx.shared.shmem
 
 shmem:flush_all()

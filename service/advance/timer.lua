@@ -1,5 +1,7 @@
 -- Copyright (C) 2017-2018 by chrono
 
+-- curl 127.1:83/timer
+
 local function once_task(premuture, uri)
     if premuture then
         ngx.log(ngx.WARN, uri, ": task abort")
