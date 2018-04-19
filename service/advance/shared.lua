@@ -46,6 +46,8 @@ assert(v == 6)
 
 local v = shmem:incr("x", 0.1, -10)
 assert(v == -9.9)
+local v = shmem:incr("x", 9.9)
+assert(v == 0)
 
 -- list
 local len = shmem:lpush('list', 'a')
@@ -84,8 +86,8 @@ ngx.say("ttl is : ", ttl)
 -- others
 ngx.say(shmem:get_keys())
 
-local cap = shmem:capacity()
-assert(cap == 1024*1024)
+local bytes = shmem:capacity()
+assert(bytes == 1024*1024)
 
 local bytes = shmem:free_space()
 ngx.say(bytes / 1024)

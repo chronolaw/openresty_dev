@@ -20,7 +20,7 @@ if not ok then
     return
 end
 
-local function min_task(premuture, name)
+local function cycle_task(premuture, name)
     if premuture then
         return
     end
@@ -29,7 +29,7 @@ local function min_task(premuture, name)
 end
 
 --[[
-local ok, err = ngx.timer.every(60, min_task, "shmem")
+local ok, err = ngx.timer.every(60, cycle_task, "shmem")
 if not ok then
     ngx.say("timer failed: ", err)
     return
