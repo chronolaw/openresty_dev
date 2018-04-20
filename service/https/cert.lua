@@ -40,8 +40,8 @@ local function init_certs()
         certs[k].cert = get_pem(prefix..name..'.crt')
         certs[k].key = get_pem(prefix..name..'.key')
 
-        ngx.log(ngx.ERR, "cert=", #certs[k].cert)
-        ngx.log(ngx.ERR, "key=", #certs[k].key)
+        --ngx.log(ngx.ERR, "cert=", #certs[k].cert)
+        --ngx.log(ngx.ERR, "key=", #certs[k].key)
     end
 end
 
