@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# ./configure --with-openssl="$HOME/Downloads/openssl-1.0.2o" --with-http_v2_module
+
 echo "create directories for nginx ..."
 
 #dirs="client_body_temp logs"
