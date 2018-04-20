@@ -56,6 +56,11 @@ end
 
 --ngx.ctx.sni = name
 
+if not certs[name] then
+    ngx.log(ngx.ERR, "not supported SNI : ", name)
+    ngx.exit(ngx.ERROR)
+end
+
 local ok, err = ssl.clear_certs()
 if not ok then
     ngx.log(ngx.ERR, "clear cert failed: ", err)
