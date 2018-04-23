@@ -72,4 +72,42 @@ for i,t in ipairs(threads) do
     ngx.say("kill ", i, " is ", kill(t))
 end
 
+-----------------
+local shmem = ngx.shared.shmem
+shmem:flush_all()
+
+local semaphore = require "ngx.semaphore"
+
+local sema = semaphore.new(0)
+
+local function producer(n)
+    for i=1,n do
+        shmem:rpush('logs', 'xxx')
+        sema:post()
+        ngx.sleep(0.1)
+    end
+end
+
+local function consumer(n)
+    for i=1,n do
+        local ok, err = sema:wait(0.2)
+        if not ok then
+            ngx.say("failed to wait sema: ", err)
+            return
+        end
+        local v = shmem:lpop('logs')
+        ngx.say("sema get: ", v)
+    end
+end
+
+ngx.say("test semaphore ...")
+
+local threads = {
+    spawn(producer, 3),
+    spawn(consumer, 3),
+}
+
+wait(unpack(threads))
+--ngx.sleep(1)
+
 ngx.say('hello ngx.thread')
