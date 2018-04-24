@@ -22,8 +22,8 @@ ngx.say("ver: ", ver)
 ngx.say("ssl_cipher: ", ngx.var.ssl_cipher)
 ngx.say("ssl_ciphers: ", ngx.var.ssl_ciphers)
 
---local addr, addrtyp, err = ssl.raw_client_addr()
---ngx.say("client addr: ", addrtyp, addr)
+local addr, addrtyp, err = ssl.raw_client_addr()
+ngx.say(addrtyp, ": ", addr_str(addr))
 
 local addr, addrtyp, err = ssl.raw_server_addr()
 ngx.say(addrtyp, ": ", addr_str(addr))
