@@ -14,7 +14,7 @@ local name, err = ssl.server_name()
 ngx.say("sni: ", name)
 
 local ver, err = ssl.get_tls1_version()
-ngx.say("ver: ", ver)
+ngx.say("ver: ", string.format("0x%x", ver))
 
 local ver, err = ssl.get_tls1_version_str()
 ngx.say("ver: ", ver)
