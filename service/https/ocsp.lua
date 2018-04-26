@@ -30,8 +30,7 @@ end
 local ocsp_url, err = ocsp.get_ocsp_responder_from_der_chain(der_cert)
 if not ocsp_url then
     ngx.log(ngx.ERR, "failed to get OCSP responder: ", err)
-    --ngx.exit(ngx.ERROR)
-    ocsp_url = "http://ocsp.digicert.com"
+    ngx.exit(ngx.ERROR)
 end
 
 if phase ~= "ssl_cert" then
@@ -46,7 +45,7 @@ if not ocsp_req then
 end
 
 local httpc = http.new()
-httpc:set_timeout(10000)
+httpc:set_timeout(2*1000)
 local res, err = httpc:request_uri(ocsp_url, {
         method = "POST",
         body = ocsp_req,
@@ -68,3 +67,17 @@ end
 ngx.say("OCSP responder query:", res.status)
 
 local ocsp_resp = res.body
+
+if ocsp_resp and #ocsp_resp > 0 then
+    local ok, err = ocsp.validate_ocsp_response(ocsp_resp, der_cert)
+    if not ok then
+        ngx.log(ngx.ERR, "failed to validate OCSP response: ", err)
+        ngx.exit(ngx.ERROR)
+    end
+end
+
+local ok, err = ocsp.set_ocsp_status_resp(ocsp_resp)
+if not ok then
+    ngx.log(ngx.ERR, "failed to set ocsp status resp: ", err)
+    ngx.exit(ngx.ERROR)
+end
