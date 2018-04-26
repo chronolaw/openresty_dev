@@ -24,3 +24,16 @@ local res = capture('/ngx_redis2',
                 {args = {key='metroid'}})
 
 ngx.print(res.body)
+
+---------------
+ngx.say('now capture multi:\n')
+
+local capture_multi = ngx.location.capture_multi
+
+local res1, res2 = capture_multi{
+                    {'/hello'},
+                    {'/ngx_redis2', {args = {key='metroid'}}}
+}
+
+ngx.print(res1.body)
+ngx.print(res2.body)
