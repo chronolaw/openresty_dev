@@ -9,4 +9,7 @@ ngx.header.date = nil
 ngx.header.content_length = 0
 ngx.header.new_field = 'xxx'
 
+local ngx_resp = require "ngx.resp"
+ngx_resp.add_header("new_field", "yyy")
+
 ngx.header["Cache-Control"] = "max-age=300"
