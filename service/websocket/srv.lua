@@ -42,7 +42,7 @@ while true do
     end
 
     if typ == "text" then
-        bytes, err = wb:send_text( data .. data)
+        bytes, err = wb:send_text( data..','..data)
         if not bytes then
             ngx.log(ngx.ERR, "failed to send: ", err)
         end
