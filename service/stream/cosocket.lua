@@ -34,7 +34,7 @@ local remains = msgpack_uint_helper(c)
 assert(remains)
 
 local len
-if remains > 0 then
+if remains == 0 then
     len = mp.unpack(c)
 else
     local data, err = sock:receive(remains)
@@ -64,11 +64,12 @@ local body = mp.pack(msg)
 local header = mp.pack(#body)
 --local header = string.format("%04d", #body)
 
-local _, err = sock:send(header .. body)
+local bytes, err = sock:send(header .. body)
 if err then
     ngx.say("failed to send data to client: ", err)
     return
 end
+ngx.log(ngx.ERR, "send bytes: ", bytes)
 
 --sock:shutdown("send")
 
