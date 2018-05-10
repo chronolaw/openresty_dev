@@ -25,3 +25,5 @@ ngx.say(stale)
 
 urls:delete('nginx')
 assert(not urls:get('nginx'))
+
+urls:flush_all()
