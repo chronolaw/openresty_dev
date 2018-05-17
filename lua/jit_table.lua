@@ -14,3 +14,11 @@ for i=1,10 do
 end
 
 print('#t = ', #t)
+
+local tab_clone = require "table.clone"
+
+local t2 = tab_clone(t)
+
+--for _,v in ipairs(t2) do
+--    print(v, ',')
+--end
