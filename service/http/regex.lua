@@ -65,7 +65,7 @@ assert(string.sub(str, from) == "23")
 --- sub
 
 local str = "abcd-123"
-str = ngx.re.sub(str, "ab", "cd", "jo")
+str = ngx.re.sub(str, "ab", "cd", "j")
 
 print("after sub : ", str)
 assert(str == "cdcd-123")
@@ -87,7 +87,7 @@ print("after sub : ", str)
 --- gsub
 
 local str = "abcd-123"
-str = ngx.re.gsub(str, "[a-z]{2}", "xyz", "jo")
+str = ngx.re.gsub(str, "[a-z]{2}", "xyz", "j")
 print("after gsub : ", str)
 
 str = ngx.re.gsub(str, [[\w+]],
