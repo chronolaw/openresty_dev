@@ -16,6 +16,11 @@ ngx.say("sni: ", name)
 local ver, err = ssl.get_tls1_version()
 ngx.say("ver: ", string.format("0x%x", ver))
 
+if ver < ssl.TLS1_VERSION then
+    ngx.say("do not support")
+    ngx.exit(444)
+end
+
 local ver, err = ssl.get_tls1_version_str()
 ngx.say("ver: ", ver)
 
