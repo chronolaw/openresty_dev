@@ -7,15 +7,9 @@ no_modules="--without-http_fastcgi_module \
             --without-http_scgi_module
            "
 
-stream="--with-stream"
-
-github="${HOME}/github"
-
-addons="--add-module=${github}/stream-lua-nginx-module
-       "
-
-./configure     \
+./configure                     \
         --build="${build_date}" \
+        --with-http_v2_module   \
         ${no_modules}
 
 
