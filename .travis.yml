@@ -26,6 +26,9 @@ install:
 script:
   - ./setup.sh
   - sudo ./run.sh > build.log 2>&1 || (cat build.log && exit 1)
+  # test
+  - ps -ef|grep nginx
+  - curl http://127.0.0.1:80/hello
   - export PATH=$PATH:/usr/local/openresty/nginx/sbin
   - prove -r t
   - sudo ./run.sh stop > build.log 2>&1 || (cat build.log && exit 1)
