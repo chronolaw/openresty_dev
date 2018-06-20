@@ -20,7 +20,7 @@ location / {
 }
 
 --- request
-GET /hello
+GET /
 
 --- response_body_like
 hello openresty
