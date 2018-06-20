@@ -11,7 +11,7 @@ env:
   global:
     - LUAJIT_LIB=/usr/lib64/libluajit-5.1.so
     - LUAJIT_INC=/usr/include/luajit-2.0
-    - OPENRESTY_PATH=/usr/local/openresty/
+    - OPENRESTY_PATH=/usr/local/openresty
 
 before_install:
   - sudo apt-get install -qq -y cpanminus libluajit-5.1-dev libgd-dev
@@ -26,11 +26,13 @@ install:
 
 script:
   - ./setup.sh
-  - pwd
-  - sudo ./run.sh > build.log 2>&1 || (cat build.log && exit 1)
+  #- pwd
+  #- sudo ./run.sh > build.log 2>&1 || (cat build.log && exit 1)
+  - sudo ${OPENRESTY_PATH}/bin/openresty -p `pwd` > build.log 2>&1 || (cat build.log && exit 1)
   # test
   - ps -ef|grep nginx
   - curl http://127.0.0.1:80/hello
-  - export PATH=$PATH:/usr/local/openresty/nginx/sbin
+  - export PATH=$PATH:${OPENRESTY_PATH}/nginx/sbin
   - prove -r t
-  - sudo ./run.sh stop > build.log 2>&1 || (cat build.log && exit 1)
+  #- sudo ./run.sh stop > build.log 2>&1 || (cat build.log && exit 1)
+  - sudo ${OPENRESTY_PATH}/bin/openresty -p `pwd` -s stop > build.log 2>&1 || (cat build.log && exit 1)
