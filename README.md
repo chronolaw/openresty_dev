@@ -1,6 +1,8 @@
 # openresty_dev
 This is the sample code for OpenResty Programming.
 
+[![Build Status](https://travis-ci.org/chronolaw/openresty_dev.svg?branch=master)](https://travis-ci.org/chronolaw/openresty_dev)
+
 ## Requirements
 * Linux or other UNIX like
 * OpenResty 1.13.6.x or later
