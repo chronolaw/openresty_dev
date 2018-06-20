@@ -24,7 +24,7 @@ install:
   - sudo apt-get install openresty
 
 script:
-  - ./run.sh > build.log 2>&1 || (cat build.log && exit 1)
+  - sudo ./run.sh > build.log 2>&1 || (cat build.log && exit 1)
   - export PATH=$PATH:/usr/local/openresty/nginx/sbin
   - prove -r t
-  - ./run.sh stop > build.log 2>&1 || (cat build.log && exit 1)
+  - sudo ./run.sh stop > build.log 2>&1 || (cat build.log && exit 1)
