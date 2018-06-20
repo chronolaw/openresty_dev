@@ -1,0 +1,30 @@
+sudo: required
+dist: trusty
+
+os: linux
+
+#language: c
+
+#compiler:
+
+env:
+  global:
+    - LUAJIT_LIB=/usr/lib64/libluajit-5.1.so
+    - LUAJIT_INC=/usr/include/luajit-2.0
+
+before_install:
+  - sudo apt-get install -qq -y cpanminus libluajit-5.1-dev libgd-dev
+  - sudo cpanm -v --notest Test::Nginx > build.log 2>&1 || (cat build.log && exit 1)
+
+install:
+  - wget -qO - https://openresty.org/package/pubkey.gpg | sudo apt-key add -
+  - sudo apt-get -y install software-properties-common
+  - sudo add-apt-repository -y "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main"
+  - sudo apt-get update
+  - sudo apt-get install openresty
+
+script:
+  - ./run.sh > build.log 2>&1 || (cat build.log && exit 1)
+  - export PATH=$PATH:/usr/local/openresty/nginx/sbin
+  - prove -r t
+  - ./run.sh stop > build.log 2>&1 || (cat build.log && exit 1)
