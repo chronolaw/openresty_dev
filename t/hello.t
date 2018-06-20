@@ -16,7 +16,7 @@ __DATA__
 --- config
 location / {
     proxy_set_header Host $host;
-    proxy_pass http://127.0.0.1:80$request_uri;
+    proxy_pass http://127.0.0.1:80;
 }
 
 --- request
