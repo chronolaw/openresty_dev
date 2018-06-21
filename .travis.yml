@@ -31,13 +31,8 @@ install:
 
 script:
   - ./setup.sh
-  #- pwd
   - sudo ${OPENRESTY_PATH}/bin/openresty -s stop
   - sudo ./run.sh > build.log 2>&1 || (cat build.log && exit 1)
-  #- ps -ef|grep nginx
-  #- curl http://127.0.0.1:80/hello
-  #- tail logs/http_access.log
   - export PATH=$PATH:${OPENRESTY_PATH}/nginx/sbin
   - prove -r t
   - sudo ./run.sh stop > build.log 2>&1 || (cat build.log && exit 1)
-  #- sudo ${OPENRESTY_PATH}/bin/openresty -p `pwd` -s stop > build.log 2>&1 || (cat build.log && exit 1)
