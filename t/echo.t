@@ -11,7 +11,7 @@ run_tests();
 
 __DATA__
 
-=== TEST 1 : hello openresty
+=== TEST 1 : echo footer
 
 --- config
 location / {
@@ -21,6 +21,10 @@ location / {
 
 --- request
 GET /echo
+
+--- response_headers_like
+x-name: chrono
+x-value: trigger
 
 --- response_body_like
 ocarina of time
