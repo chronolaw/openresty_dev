@@ -20,8 +20,8 @@ location / {
 }
 
 --- request
-GET /hello
+GET /echo
 
 --- response_body_like
-hello openresty
+ocarina of time
 
