@@ -3,6 +3,11 @@ dist: trusty
 
 os: linux
 
+addons:
+  hosts:
+    - www.chrono.com
+    - www.metroid.net
+
 #language: c
 
 #compiler:
