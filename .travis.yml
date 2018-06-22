@@ -31,6 +31,7 @@ install:
 
 script:
   - ./setup.sh
+  - sudo ${OPENRESTY_PATH}/bin/openresty -V
   - sudo ${OPENRESTY_PATH}/bin/openresty -s stop
   - sudo ./run.sh > build.log 2>&1 || (cat build.log && exit 1)
   - export PATH=$PATH:${OPENRESTY_PATH}/nginx/sbin
