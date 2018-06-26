@@ -3,6 +3,9 @@ dist: trusty
 
 os: linux
 
+notifications:
+  email: false
+
 addons:
   hosts:
     - www.chrono.com
@@ -11,6 +14,13 @@ addons:
 #language: c
 
 #compiler:
+
+cache:
+  cpan: true
+  apt: true
+  directories:
+    - $DOWNLOAD_CACHE
+    - $INSTALL_CACHE
 
 env:
   global:
