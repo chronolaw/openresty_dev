@@ -18,9 +18,6 @@ addons:
 cache:
   cpan: true
   apt: true
-  directories:
-    - $DOWNLOAD_CACHE
-    - $INSTALL_CACHE
 
 env:
   global:
