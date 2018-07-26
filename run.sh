@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# Attention!
+# You must modify your /etc/hosts
+# Add below:
+# 127.0.1.1     www.chrono.com
+# 127.0.1.1     www.metroid.net
+#
+# Or else OpenResty will be blocked in resolving
+
 openresty_path="/usr/local/openresty"
 openresty="${openresty_path}/bin/openresty"
 opts="-p `pwd`"
