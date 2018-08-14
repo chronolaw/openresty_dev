@@ -8,6 +8,13 @@
 #
 # Or else OpenResty will be blocked in resolving
 
+flag=`grep 'www.chrono.com' /etc/hosts |wc -l`
+if [ $flag = "0" ]; then
+    echo "You must modify your /etc/hosts"
+    echo "Or else OpenResty will be blocked in resolving"
+    exit 1
+fi
+
 openresty_path="/usr/local/openresty"
 openresty="${openresty_path}/bin/openresty"
 opts="-p `pwd`"
