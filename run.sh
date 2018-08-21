@@ -15,6 +15,11 @@ if [ $flag = "0" ]; then
     exit 1
 fi
 
+# openresty needs ./logs
+if [[ ! -d "logs" ]]; then
+    mkdir logs
+fi
+
 openresty_path="/usr/local/openresty"
 openresty="${openresty_path}/bin/openresty"
 opts="-p `pwd`"
