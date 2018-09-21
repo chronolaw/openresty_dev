@@ -3,6 +3,7 @@
 -- Copyright (C) 2018 by chrono
 
 -- should sudo this !!
+-- it also can be run in luajit command
 
 local ffi = require "ffi"
 
