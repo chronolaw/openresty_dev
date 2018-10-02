@@ -3,8 +3,8 @@
 # Attention!
 # You must modify your /etc/hosts
 # Add below:
-# 127.0.1.1     www.chrono.com
-# 127.0.1.1     www.metroid.net
+# 127.0.0.1     www.chrono.com
+# 127.0.0.1     www.metroid.net
 #
 # Or else OpenResty will be blocked in resolving
 
