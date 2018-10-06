@@ -2,7 +2,7 @@
 
 local client = require "resty.websocket.client"
 
-local wb, err = client.new{
+local wb, err = client:new{
     timeout = 5000,
     max_payload_len = 1024 * 64,
     }
