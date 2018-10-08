@@ -16,7 +16,7 @@ if [ $flag = "0" ]; then
 fi
 
 # openresty needs ./logs
-if [[ ! -d "logs" ]]; then
+if [ ! -d "logs" ]; then
     mkdir logs
 fi
 
