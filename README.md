@@ -12,6 +12,7 @@ This is the sample code for OpenResty Programming.
 * [stream-lua-nginx-module](https://github.com/openresty/stream-lua-nginx-module) - Embed the power of Lua into NGINX TCP servers
 
 ## See Also
+* [透视HTTP协议](https://time.geekbang.org/column/article/97837)
 * [ngx_cpp_dev](https://github.com/chronolaw/ngx_cpp_dev) - Nginx cpp development kit, with the power of C++11 and Boost Library.
 * [ngx_ansic_dev](https://github.com/chronolaw/ngx_ansic_dev) - Nginc ANSI C Development
 * [annotated_nginx](https://github.com/chronolaw/annotated_nginx) - 注释nginx，学习研究源码
