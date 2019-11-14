@@ -2,6 +2,9 @@
 
 -- Copyright (C) 2017 by chrono
 
+-- custom build
+-- make LUA_INCLUDE_DIR=/opt/luajit/include/luajit-2.1
+
 -- safe decode
 local cjson = require "cjson.safe"
 
