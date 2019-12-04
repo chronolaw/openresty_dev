@@ -9,6 +9,8 @@
 -- gcc -O2 -shared -fPIC -I/usr/local/include/luajit-2.1 pb.c -o pb.so
 -- cp pb.so protoc.lua /usr/local/openresty/lualib
 
+-- protoc -o test.pb test.proto
+
 local pb = require "pb"
 
 -- protoc -o test.pb test.proto
