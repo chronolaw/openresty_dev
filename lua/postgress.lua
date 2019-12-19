@@ -51,11 +51,16 @@ local function query_db(query)
 end
 
 local sql_version = [[
-select version();
+select version();   -- comment
 ]]
 
 local sql_create_table = [[
-create table test (id int, name text);
+create table test
+(seq serial primary key,    -- sequence
+ id int,                    -- id num
+ name text,                 -- name
+ desc jsonb                 -- json object
+ );
 ]]
 
 local sql_drop_table = [[
@@ -63,8 +68,8 @@ drop table if exists test;
 ]]
 
 local sql_insert_table = [[
-insert into test (id, name)
-values(100, 'aaa');
+insert into test (seq, id, name)
+values(default, 100, 'aaa');
 ]]
 
 local sql_query_table = [[
