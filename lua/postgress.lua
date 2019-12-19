@@ -50,6 +50,10 @@ local function query_db(query)
     return res
 end
 
+local sql_version = [[
+select version();
+]]
+
 local sql_create_table = [[
 create table test (id int, name text);
 ]]
@@ -68,6 +72,10 @@ select * from test;
 ]]
 
 local res
+
+res = query_db(sql_version)
+print(res[1].version)
+--print(cjson.encode(res))
 
 res = query_db(sql_drop_table)
 assert(res == true)
