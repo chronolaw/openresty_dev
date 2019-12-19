@@ -11,6 +11,8 @@
 local cjson = require "cjson.safe"
 local pgmoon = require "pgmoon"
 
+local quote_sql_str = ngx.quote_sql_str
+
 local db_params = {
     host = "127.0.0.1",
     port = "5432",
@@ -53,7 +55,7 @@ create table test (id int, name text);
 ]]
 
 local sql_drop_table = [[
-drop table test;
+drop table if exists test;
 ]]
 
 local sql_insert_table = [[
@@ -66,6 +68,9 @@ select * from test;
 ]]
 
 local res
+
+res = query_db(sql_drop_table)
+assert(res == true)
 
 res = query_db(sql_create_table)
 --print(res)
@@ -82,7 +87,4 @@ assert(res[1].id == 100)
 assert(res[1].name == 'aaa')
 
 print(cjson.encode(res))
-
-res = query_db(sql_drop_table)
-assert(res == true)
 
