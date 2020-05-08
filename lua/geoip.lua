@@ -22,9 +22,11 @@ local resty_mmdb = require("resty.maxminddb")
 
 local mmdb = resty_mmdb.new('/mnt/share/GeoLite2-City.mmdb')
 
---local ip = '1.1.1.1'          -- au
-local ip = '8.8.8.8'            -- us
---local ip = '114.114.114.114'  -- cn
+--local ip = '1.1.1.1'              -- au
+local ip = '8.8.8.8'              -- us
+--local ip = '114.114.114.114'      -- cn
+--local ip = '0.0.0.0'              -- nil
+--local ip = '999.999.999.999'        -- nil
 
 local res, err = mmdb:get_area_code(ip)
 --local res, err = geo.lookup(ip)
