@@ -2,7 +2,10 @@
 
 -- Copyright (C) 2017 by chrono
 
-x = 1
+-- now resty do not allow global var
+--local x = 1
+
+local x = 1
 assert(x == 1)
 
 local str = 'matrix'
