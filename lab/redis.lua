@@ -82,12 +82,16 @@ if res == ngx.null or #res[1][2] == 0 then
     print('mq is all consumed')
 else
     local msg_id = res[1][2][1][1]
-    ok, err = rds:xack(topic, group, msg_id)
+    --ok, err = rds:xack(topic, group, msg_id)
     print('xack msg = ', msg_id)
 end
 
 -- check not acked
 res, err = rds:xpending(topic, group)
+print(cjson.encode(res))
+
+-- get all pending msg
+res, err = rds:xpending(topic, group, '-', '+', 10)
 print(cjson.encode(res))
 
 
