@@ -1,5 +1,6 @@
 -- Copyright (C) 2018 by chrono
 
+-- resty redis.lua
 -- curl 127.1:81/redis
 
 local redis = require "resty.redis"
