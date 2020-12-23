@@ -41,6 +41,7 @@ print(res.body)
 -- curl -X DELETE http://127.0.0.1:8080/7,1477f3bb59 -v
 -- curl http://127.0.0.1:8080/7,1477f3bb59 -v
 
+-- we can use ngx.re.match to get fid
 local info = cjson.decode(res.body)
 
 local vid = tonumber(string.match(info.fid, '%d+'))
