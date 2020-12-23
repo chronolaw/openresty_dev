@@ -9,6 +9,10 @@ local master_host = 'http://127.0.0.1:9333'
 --local volume_host = 'http://127.0.0.1:8080'
 local filer_host = 'http://127.0.0.1:8888'
 
+-- cache volume's url
+-- should use lru_cache
+local volumes = {}
+
 local httpc
 local res, err
 
@@ -20,7 +24,9 @@ end
 
 httpc:set_timeout(2 * 1000)
 
+-- save to fid
 -- curl http://localhost:9333/dir/assign
+
 res, err = httpc:request_uri(
             master_host .. '/dir/assign')
 
@@ -36,6 +42,13 @@ print(res.body)
 -- curl http://127.0.0.1:8080/7,1477f3bb59 -v
 
 local info = cjson.decode(res.body)
+
+local vid = tonumber(string.match(info.fid, '%d+'))
+print('vid = ', vid)
+
+--if not volumes[vid] then
+--    volumes[vid] = info.url
+--end
 
 local boundary = '00002020'
 
@@ -54,6 +67,7 @@ print(body)
 
 res, err = httpc:request_uri(
             'http://' .. info.url,
+            --'http://' .. volumes[vid], --info.url,
             {
                 path = '/' .. info.fid,
                 method = 'POST',
@@ -67,6 +81,19 @@ if err then
 end
 
 print(res.body)
+
+-- read from fid
+print('fid = ', info.fid)
+
+res, err = httpc:request_uri(
+            'http://' .. info.url,
+            {
+                path = '/' .. info.fid,
+            }
+    )
+
+print(err or 'ok')
+print('read fid = ', res.body)
 
 -- save file
 
@@ -102,7 +129,6 @@ res, err = httpc:request_uri(
             filer_host,
             {
                 path = '/storage/xxx.jpg',
-                body = body,
             }
     )
 
