@@ -16,6 +16,7 @@ ARG RESTY_IMAGE="openresty/openresty:alpine"
 
 FROM ${RESTY_IMAGE}
 
+ARG ROOT_LUALIB="/usr/local/openresty/lualib/"
 ARG RESTY_LUALIB="/usr/local/openresty/lualib/resty/"
 
 ARG RESTY_HTTP_VERSION="0.14"
@@ -28,7 +29,7 @@ RUN cd /tmp \
     && cp lua-resty-http-${RESTY_HTTP_VERSION}/lib/resty/*.lua ${RESTY_LUALIB} \
     && wget https://github.com/iresty/lua-typeof/archive/v${RESTY_TYPEOF_VERSION}.tar.gz \
     && tar xfz v${RESTY_TYPEOF_VERSION}.tar.gz \
-    && cp lua-typeof-${RESTY_TYPEOF_VERSION}/lib/*.lua ${RESTY_LUALIB} \
+    && cp lua-typeof-${RESTY_TYPEOF_VERSION}/lib/*.lua ${ROOT_LUALIB} \
     && wget https://github.com/api7/lua-resty-etcd/archive/v${RESTY_ETCD_VERSION}.tar.gz \
     && tar xfz v${RESTY_ETCD_VERSION}.tar.gz \
     && cp -r lua-resty-etcd-${RESTY_ETCD_VERSION}/lib/resty/* ${RESTY_LUALIB} \
