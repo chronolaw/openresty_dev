@@ -47,6 +47,8 @@ res, err = rds:xread('count', mq_len, 'streams', topic, 0)
 if err then
     print('xread err: ', err)
 end
+
+-- [["mq",[["1608704712917-0",["name","100"]],["1608704712919-0",["name","200"]],["1608704712919-1",["name","300"]]]]]
 print(cjson.encode(res))
 
 assert(res[1][1] == topic)
@@ -76,6 +78,8 @@ res, err = rds:xreadgroup('group', group, consumer,
 if err then
     print('xread err: ', err)
 end
+
+-- [["mq",[["1608704712917-0",["name","100"]]]]]
 print(cjson.encode(res))
 
 if res == ngx.null or #res[1][2] == 0 then
@@ -88,10 +92,14 @@ end
 
 -- check not acked
 res, err = rds:xpending(topic, group)
+
+-- [1,"1608704712917-0","1608704712917-0",[["test_consumer","1"]]]
 print(cjson.encode(res))
 
 -- get all pending msg
 res, err = rds:xpending(topic, group, '-', '+', 10)
+
+-- [["1608704712917-0","test_consumer",0,1]]
 print(cjson.encode(res))
 
 
