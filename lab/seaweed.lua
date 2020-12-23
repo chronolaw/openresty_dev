@@ -95,6 +95,33 @@ res, err = httpc:request_uri(
 print(err or 'ok')
 print('read fid = ', res.body)
 
+-- directly submit to master
+
+local body = '--' .. boundary ..'\r\n' ..
+             --'Content-Disposition: form-data;\r\n' ..
+             'Content-Type: application/octet-stream\r\n' ..
+             '\r\n' ..
+             'submit' .. '\r\n' ..
+             '--' .. boundary ..'--\r\n'
+
+local headers = {
+                 ['Content-Type'] = 'multipart/form-data; boundary='.. boundary,
+                 ['Content-Length'] = #body
+                }
+
+res, err = httpc:request_uri(
+            master_host,
+            {
+                path = '/submit',
+                method = 'POST',
+                headers = headers,
+                body = body,
+            }
+    )
+
+print('submit return = ', res.body)
+
+--[==[
 -- save file
 
 -- curl -F file=@a.txt "http://localhost:8888/txt/" --trace-ascii -
@@ -137,3 +164,5 @@ print('len = ', res.headers['Content-Length'])
 --    print(k , '=>', v)
 --end
 print('read = ', res.body)
+
+--]==]
