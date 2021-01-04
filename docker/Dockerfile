@@ -21,15 +21,15 @@ ARG RESTY_LUALIB="/usr/local/openresty/lualib/resty/"
 
 ARG RESTY_HTTP_VERSION="0.14"
 ARG RESTY_ETCD_VERSION="1.4.3"
-ARG RESTY_TYPEOF_VERSION="0.1"
+ARG LUA_TYPEOF_VERSION="0.1"
 
 RUN cd /tmp \
     && wget https://github.com/ledgetech/lua-resty-http/archive/v${RESTY_HTTP_VERSION}.tar.gz \
     && tar xfz v${RESTY_HTTP_VERSION}.tar.gz \
     && cp lua-resty-http-${RESTY_HTTP_VERSION}/lib/resty/*.lua ${RESTY_LUALIB} \
-    && wget https://github.com/iresty/lua-typeof/archive/v${RESTY_TYPEOF_VERSION}.tar.gz \
-    && tar xfz v${RESTY_TYPEOF_VERSION}.tar.gz \
-    && cp lua-typeof-${RESTY_TYPEOF_VERSION}/lib/*.lua ${ROOT_LUALIB} \
+    && wget https://github.com/iresty/lua-typeof/archive/v${LUA_TYPEOF_VERSION}.tar.gz \
+    && tar xfz v${LUA_TYPEOF_VERSION}.tar.gz \
+    && cp lua-typeof-${LUA_TYPEOF_VERSION}/lib/*.lua ${ROOT_LUALIB} \
     && wget https://github.com/api7/lua-resty-etcd/archive/v${RESTY_ETCD_VERSION}.tar.gz \
     && tar xfz v${RESTY_ETCD_VERSION}.tar.gz \
     && cp -r lua-resty-etcd-${RESTY_ETCD_VERSION}/lib/resty/* ${RESTY_LUALIB} \
