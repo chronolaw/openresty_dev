@@ -10,7 +10,7 @@ print([[raw string \r\n]])
 print([[^\d+.\d+$]])
 print([["",'',""]])
 
-x = [=[
+local x = [=[
 [[no \r\n, just one line]]
 ]=]
 print(x)
