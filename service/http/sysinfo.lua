@@ -21,4 +21,4 @@ if ngx.config.subsystem ~= 'http' then
     error("only works in http subsystem")
 end
 
-ngx.log(ngx.ERR, "some error occured")
+ngx.log(ngx.ERR, "some error occurred")
